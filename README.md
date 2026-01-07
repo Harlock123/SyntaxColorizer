@@ -5,8 +5,8 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 ## Features
 
 - Real-time syntax highlighting as you type
-- Support for 12 programming languages
-- 4 built-in color themes
+- Support for 26 programming languages
+- 7 built-in color themes
 - Line numbers display (toggleable)
 - Linting infrastructure with customizable rules
 - MVVM-friendly design
@@ -14,18 +14,15 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 
 ## Supported Languages
 
-- C#
-- Visual Basic .NET
-- Microsoft SQL Server (T-SQL)
-- Oracle SQL (PL/SQL)
-- Java
-- JavaScript
-- TypeScript
-- C
-- C++
-- PHP
-- Python
-- Rust
+| Category | Languages |
+|----------|-----------|
+| **C-Family** | C, C++, C#, Java, Kotlin, Scala, Swift |
+| **Scripting** | JavaScript, TypeScript, Python, Ruby, PHP |
+| **Systems** | Rust, Go |
+| **Microsoft** | Visual Basic .NET, PowerShell, MS SQL (T-SQL) |
+| **Database** | Oracle SQL (PL/SQL) |
+| **Web** | HTML, CSS, JSON, XML, YAML, Markdown |
+| **DevOps** | Bash, Dockerfile |
 
 ## Installation
 
@@ -124,16 +121,29 @@ editor.ShowLineNumbers = true;
 
 ## Built-in Themes
 
+| Theme | Style |
+|-------|-------|
+| Visual Studio Light | Light |
+| Visual Studio Dark | Dark |
+| Monokai | Dark |
+| GitHub Light | Light |
+| GitHub Dark | Dark |
+| Solarized Light | Light |
+| Solarized Dark | Dark |
+
 ```csharp
 using SyntaxColorizer.Themes;
 
 // Light themes
 var vsLight = BuiltInThemes.VisualStudioLight;
-var github = BuiltInThemes.GitHubLight;
+var githubLight = BuiltInThemes.GitHubLight;
+var solarizedLight = BuiltInThemes.SolarizedLight;
 
 // Dark themes
 var vsDark = BuiltInThemes.VisualStudioDark;
 var monokai = BuiltInThemes.Monokai;
+var githubDark = BuiltInThemes.GitHubDark;
+var solarizedDark = BuiltInThemes.SolarizedDark;
 ```
 
 ## Linting
