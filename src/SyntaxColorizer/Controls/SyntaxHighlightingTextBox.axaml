@@ -1,0 +1,145 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:SyntaxColorizer.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Width="400" Height="300">
+            <controls:SyntaxHighlightingTextBox Text="public class Hello { }" />
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|SyntaxHighlightingTextBox">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <!-- Line Numbers -->
+                        <ItemsControl x:Name="PART_LineNumbers"
+                                      Grid.Column="0"
+                                      IsVisible="{TemplateBinding ShowLineNumbers}"
+                                      Margin="0,4,8,4"
+                                      MinWidth="30">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"
+                                               FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=controls:SyntaxHighlightingTextBox}}"
+                                               FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=controls:SyntaxHighlightingTextBox}}"
+                                               Foreground="{Binding LineNumberForeground, RelativeSource={RelativeSource AncestorType=controls:SyntaxHighlightingTextBox}}"
+                                               TextAlignment="Right"
+                                               Padding="4,0"
+                                               MinWidth="30" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Separator -->
+                        <Border x:Name="PART_LineNumberSeparator"
+                                Grid.Column="0"
+                                Width="1"
+                                Background="LightGray"
+                                HorizontalAlignment="Right"
+                                IsVisible="{TemplateBinding ShowLineNumbers}" />
+
+                        <!-- Code Editor Area -->
+                        <ScrollViewer x:Name="PART_ScrollViewer"
+                                      Grid.Column="1"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <Grid>
+                                <!-- Highlighted Text Display (visible layer) -->
+                                <SelectableTextBlock x:Name="PART_HighlightedText"
+                                                     FontFamily="{TemplateBinding FontFamily}"
+                                                     FontSize="{TemplateBinding FontSize}"
+                                                     Padding="8,4"
+                                                     TextWrapping="NoWrap"
+                                                     IsHitTestVisible="False" />
+
+                                <!-- Invisible TextBox for input handling -->
+                                <TextBox x:Name="PART_TextBox"
+                                         Classes="syntax-input"
+                                         Text="{TemplateBinding Text, Mode=TwoWay}"
+                                         FontFamily="{TemplateBinding FontFamily}"
+                                         FontSize="{TemplateBinding FontSize}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         AcceptsReturn="{TemplateBinding AcceptsReturn}"
+                                         AcceptsTab="{TemplateBinding AcceptsTab}"
+                                         Padding="8,4"
+                                         TextWrapping="NoWrap"
+                                         Foreground="Transparent"
+                                         CaretBrush="Black"
+                                         SelectionBrush="#400078D7"
+                                         SelectionForegroundBrush="Transparent"
+                                         Background="Transparent"
+                                         BorderThickness="0" />
+
+                                <!-- Linting Overlay -->
+                                <Canvas x:Name="PART_LintingOverlay"
+                                        IsHitTestVisible="False" />
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- Override TextBox styles to keep it transparent in all states -->
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="Transparent" />
+    </Style>
+
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input:pointerover">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="Transparent" />
+    </Style>
+
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input:focus">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="Transparent" />
+    </Style>
+
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input:focus-within">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="Transparent" />
+    </Style>
+
+    <!-- Also target the inner border of the TextBox -->
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input /template/ Border">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input:pointerover /template/ Border">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="controls|SyntaxHighlightingTextBox TextBox.syntax-input:focus /template/ Border">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!-- Dark theme variant -->
+    <Style Selector="controls|SyntaxHighlightingTextBox.dark">
+        <Setter Property="Background" Value="#1E1E1E" />
+        <Setter Property="BorderBrush" Value="#3F3F46" />
+    </Style>
+
+    <!-- Monokai theme variant -->
+    <Style Selector="controls|SyntaxHighlightingTextBox.monokai">
+        <Setter Property="Background" Value="#272822" />
+        <Setter Property="BorderBrush" Value="#49483E" />
+    </Style>
+
+</Styles>

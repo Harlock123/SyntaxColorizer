@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+
+    <!-- NuGet Package Properties -->
+    <PackageId>SyntaxColorizer</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Your Name</Authors>
+    <Description>A syntax highlighting TextBox control for Avalonia with support for multiple programming languages.</Description>
+    <PackageTags>avalonia;syntax-highlighting;textbox;code-editor</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.2.1" />
+  </ItemGroup>
+
+  <!-- Include AXAML files as embedded resources -->
+  <ItemGroup>
+    <AvaloniaResource Include="Controls\**\*.axaml" />
+  </ItemGroup>
+
+</Project>

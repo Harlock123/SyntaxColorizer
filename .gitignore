@@ -1,0 +1,117 @@
+# Build results
+[Aa]rtifacts/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Pp]ublish/
+[Pp]ublishOutput/
+bld/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# TeamCity
+_TeamCity*
+
+# DotCover
+*.dotCover
+
+# AxoCover
+.axoCover/*
+!.axoCover/settings.json
+
+# Coverlet
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# NDepend
+*.ndresult
+
+# Benchmark results
+BenchmarkDotNet.Artifacts/
+
+# Crash dump files
+*.dmp
+crashdumps/
+
+# MiniProfiler
+App_Data/*.mdf
+App_Data/*.ldf
+
+# ServiceFabric
+*.sfpkg
+*.sfproj.user
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Fody
+FodyWeavers.xsd
+
+# Others
+*.tmp
+*.temp
+*.bak
+~*
+*.cache
+*.pidb
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.stackdump
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+*.lnk
+
+# Claude Code
+.claude/
