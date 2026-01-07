@@ -2,6 +2,17 @@
 
 A syntax-highlighting TextBox control for Avalonia with support for multiple programming languages. Built using only native Avalonia features without external dependencies.
 
+![SyntaxColorizer Demo](docs/images/Screenshot1.png)
+
+<details>
+<summary>More Screenshots</summary>
+
+![Screenshot 2](docs/images/Screenshot2.png)
+![Screenshot 3](docs/images/Screenshot3.png)
+![Screenshot 4](docs/images/Screenshot4.png)
+
+</details>
+
 ## Features
 
 - Real-time syntax highlighting as you type
