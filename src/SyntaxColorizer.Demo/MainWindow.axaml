@@ -155,7 +155,7 @@
                 </ComboBox>
 
                 <TextBlock Text="Theme:" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="#333333" />
-                <ComboBox x:Name="ThemeSelector" Width="180" SelectedIndex="0">
+                <ComboBox x:Name="ThemeSelector" Width="180" SelectedIndex="13">
                     <ComboBoxItem Content="Dracula" Tag="Dracula" />
                     <ComboBoxItem Content="GitHub Dark" Tag="GitHubDark" />
                     <ComboBoxItem Content="GitHub Light" Tag="GitHubLight" />
