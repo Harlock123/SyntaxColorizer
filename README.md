@@ -40,6 +40,28 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 
 ## Installation
 
+### From NuGet (Recommended)
+
+Install via the .NET CLI:
+
+```bash
+dotnet add package SyntaxColorizer
+```
+
+Or via the Package Manager Console in Visual Studio:
+
+```powershell
+Install-Package SyntaxColorizer
+```
+
+Or add directly to your `.csproj`:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="SyntaxColorizer" Version="1.0.0" />
+</ItemGroup>
+```
+
 ### From Source
 
 1. Clone the repository
@@ -47,27 +69,12 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
    ```bash
    dotnet build
    ```
-
-### As a Project Reference
-
-Add a reference to the `SyntaxColorizer` project in your Avalonia application:
-
-```xml
-<ItemGroup>
-  <ProjectReference Include="path/to/SyntaxColorizer/SyntaxColorizer.csproj" />
-</ItemGroup>
-```
-
-### As a NuGet Package
-
-Build and pack the library:
-
-```bash
-cd src/SyntaxColorizer
-dotnet pack -c Release
-```
-
-Then install the resulting `.nupkg` file in your project.
+3. Add a project reference to your Avalonia application:
+   ```xml
+   <ItemGroup>
+     <ProjectReference Include="path/to/SyntaxColorizer/SyntaxColorizer.csproj" />
+   </ItemGroup>
+   ```
 
 ## Usage
 

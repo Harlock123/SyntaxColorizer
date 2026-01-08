@@ -1,29 +1,57 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 
     <!-- NuGet Package Properties -->
     <PackageId>SyntaxColorizer</PackageId>
     <Version>1.0.0</Version>
-    <Authors>Your Name</Authors>
-    <Description>A syntax highlighting TextBox control for Avalonia with support for multiple programming languages.</Description>
-    <PackageTags>avalonia;syntax-highlighting;textbox;code-editor</PackageTags>
+    <Authors>Lonnie Watson</Authors>
+    <Company>Personal</Company>
+    <Product>SyntaxColorizer</Product>
+    <Description>A syntax highlighting TextBox control for Avalonia with support for 37 programming languages and 14 built-in color themes. Features real-time highlighting, line numbers, and linting infrastructure.</Description>
+    <PackageTags>avalonia;syntax-highlighting;textbox;code-editor;syntax;highlighting;editor;avalonia-ui</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/Harlock123/SyntaxColorizer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Harlock123/SyntaxColorizer.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>Copyright (c) 2024 Your Name</Copyright>
+    <PackageReleaseNotes>Initial release with support for 37 languages and 14 themes.</PackageReleaseNotes>
+
+    <!-- Documentation and symbols -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- SourceLink for debugging -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+    <!-- Deterministic builds for reproducibility -->
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.1" />
     <PackageReference Include="Avalonia.AvaloniaEdit" Version="11.3.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <!-- Include AXAML files as embedded resources -->
   <ItemGroup>
     <AvaloniaResource Include="Controls\**\*.axaml" />
+  </ItemGroup>
+
+  <!-- Include README and LICENSE in the package -->
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
