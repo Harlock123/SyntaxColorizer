@@ -156,20 +156,20 @@
 
                 <TextBlock Text="Theme:" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="#333333" />
                 <ComboBox x:Name="ThemeSelector" Width="180" SelectedIndex="0">
-                    <ComboBoxItem Content="Visual Studio Light" Tag="VSLight" />
-                    <ComboBoxItem Content="Visual Studio Dark" Tag="VSDark" />
-                    <ComboBoxItem Content="Monokai" Tag="Monokai" />
-                    <ComboBoxItem Content="GitHub Light" Tag="GitHubLight" />
-                    <ComboBoxItem Content="GitHub Dark" Tag="GitHubDark" />
-                    <ComboBoxItem Content="Solarized Light" Tag="SolarizedLight" />
-                    <ComboBoxItem Content="Solarized Dark" Tag="SolarizedDark" />
                     <ComboBoxItem Content="Dracula" Tag="Dracula" />
-                    <ComboBoxItem Content="One Dark" Tag="OneDark" />
-                    <ComboBoxItem Content="One Light" Tag="OneLight" />
-                    <ComboBoxItem Content="Nord" Tag="Nord" />
+                    <ComboBoxItem Content="GitHub Dark" Tag="GitHubDark" />
+                    <ComboBoxItem Content="GitHub Light" Tag="GitHubLight" />
                     <ComboBoxItem Content="Gruvbox Dark" Tag="GruvboxDark" />
                     <ComboBoxItem Content="Gruvbox Light" Tag="GruvboxLight" />
+                    <ComboBoxItem Content="Monokai" Tag="Monokai" />
+                    <ComboBoxItem Content="Nord" Tag="Nord" />
+                    <ComboBoxItem Content="One Dark" Tag="OneDark" />
+                    <ComboBoxItem Content="One Light" Tag="OneLight" />
                     <ComboBoxItem Content="Quiet Light" Tag="QuietLight" />
+                    <ComboBoxItem Content="Solarized Dark" Tag="SolarizedDark" />
+                    <ComboBoxItem Content="Solarized Light" Tag="SolarizedLight" />
+                    <ComboBoxItem Content="Visual Studio Dark" Tag="VSDark" />
+                    <ComboBoxItem Content="Visual Studio Light" Tag="VSLight" />
                 </ComboBox>
 
                 <CheckBox x:Name="ShowLineNumbersCheckBox" Classes="toolbar-checkbox" Content="Show Line Numbers" IsChecked="True" VerticalAlignment="Center" Margin="20,0,0,0" />
