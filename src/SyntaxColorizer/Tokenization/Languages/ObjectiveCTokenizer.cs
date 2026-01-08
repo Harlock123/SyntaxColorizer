@@ -174,12 +174,11 @@ public class ObjectiveCTokenizer : LanguageTokenizerBase
             { "alloc", TokenType.Method },
             { "init", TokenType.Method },
             { "new", TokenType.Method },
-            { "copy", TokenType.Method },
+            // Note: "copy" and "retain" already defined as property attributes above
             { "mutableCopy", TokenType.Method },
             { "dealloc", TokenType.Method },
             { "release", TokenType.Method },
             { "autorelease", TokenType.Method },
-            { "retain", TokenType.Method },
             { "description", TokenType.Method },
         };
 
