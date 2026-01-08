@@ -332,6 +332,8 @@ public class SyntaxHighlightingTextBox : TemplatedControl
         if (_textBox != null)
         {
             _textBox.TextChanging += OnInnerTextBoxTextChanging;
+            // Subscribe to actual text changes (after the change is applied)
+            _textBox.PropertyChanged += OnInnerTextBoxPropertyChanged;
             // Use tunneling (Preview) to intercept before TextBox handles the event
             _textBox.AddHandler(KeyDownEvent, OnInnerTextBoxKeyDown, Avalonia.Interactivity.RoutingStrategies.Tunnel);
             _textBox.AddHandler(TextInputEvent, OnInnerTextBoxTextInput, Avalonia.Interactivity.RoutingStrategies.Tunnel);
@@ -409,8 +411,19 @@ public class SyntaxHighlightingTextBox : TemplatedControl
 
     private void OnInnerTextBoxTextChanging(object? sender, TextChangingEventArgs e)
     {
-        SyncText();
-        ScheduleHighlightUpdate();
+        // Note: TextChanging fires BEFORE the text changes, so we don't sync here
+        // The actual sync happens in OnInnerTextBoxTextChanged
+    }
+
+    private void OnInnerTextBoxPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        // Only react to Text property changes
+        if (e.Property == TextBox.TextProperty)
+        {
+            // This fires AFTER the text has actually changed
+            SyncText();
+            ScheduleHighlightUpdate();
+        }
     }
 
     private void OnInnerTextBoxKeyDown(object? sender, KeyEventArgs e)

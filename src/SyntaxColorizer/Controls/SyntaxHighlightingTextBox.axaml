@@ -53,6 +53,7 @@
                                 <SelectableTextBlock x:Name="PART_HighlightedText"
                                                      FontFamily="{TemplateBinding FontFamily}"
                                                      FontSize="{TemplateBinding FontSize}"
+                                                     LineHeight="{TemplateBinding FontSize}"
                                                      Padding="8,4"
                                                      TextWrapping="NoWrap"
                                                      IsHitTestVisible="False" />
@@ -63,6 +64,7 @@
                                          Text="{TemplateBinding Text, Mode=TwoWay}"
                                          FontFamily="{TemplateBinding FontFamily}"
                                          FontSize="{TemplateBinding FontSize}"
+                                         LineHeight="{TemplateBinding FontSize}"
                                          IsReadOnly="{TemplateBinding IsReadOnly}"
                                          AcceptsReturn="{TemplateBinding AcceptsReturn}"
                                          AcceptsTab="{TemplateBinding AcceptsTab}"
