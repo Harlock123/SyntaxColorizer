@@ -99,5 +99,23 @@ public enum SyntaxLanguage
     R,
 
     /// <summary>Groovy programming language.</summary>
-    Groovy
+    Groovy,
+
+    /// <summary>TOML configuration file format.</summary>
+    Toml,
+
+    /// <summary>Haskell programming language.</summary>
+    Haskell,
+
+    /// <summary>GraphQL query language.</summary>
+    GraphQL,
+
+    /// <summary>SCSS/Sass/Less CSS preprocessors.</summary>
+    Scss,
+
+    /// <summary>Objective-C programming language.</summary>
+    ObjectiveC,
+
+    /// <summary>Elixir programming language.</summary>
+    Elixir
 }

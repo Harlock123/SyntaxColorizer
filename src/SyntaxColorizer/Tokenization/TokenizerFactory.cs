@@ -92,6 +92,12 @@ public static class TokenizerFactory
             SyntaxLanguage.FSharp => new FSharpTokenizer(),
             SyntaxLanguage.R => new RTokenizer(),
             SyntaxLanguage.Groovy => new GroovyTokenizer(),
+            SyntaxLanguage.Toml => new TomlTokenizer(),
+            SyntaxLanguage.Haskell => new HaskellTokenizer(),
+            SyntaxLanguage.GraphQL => new GraphQLTokenizer(),
+            SyntaxLanguage.Scss => new ScssTokenizer(),
+            SyntaxLanguage.ObjectiveC => new ObjectiveCTokenizer(),
+            SyntaxLanguage.Elixir => new ElixirTokenizer(),
             _ => null
         };
     }

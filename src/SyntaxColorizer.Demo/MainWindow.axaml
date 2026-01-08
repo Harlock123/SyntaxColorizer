@@ -122,9 +122,12 @@
                     <ComboBoxItem Content="CSS" Tag="Css" />
                     <ComboBoxItem Content="Dart" Tag="Dart" />
                     <ComboBoxItem Content="Dockerfile" Tag="Dockerfile" />
+                    <ComboBoxItem Content="Elixir" Tag="Elixir" />
                     <ComboBoxItem Content="F#" Tag="FSharp" />
                     <ComboBoxItem Content="Go" Tag="Go" />
+                    <ComboBoxItem Content="GraphQL" Tag="GraphQL" />
                     <ComboBoxItem Content="Groovy" Tag="Groovy" />
+                    <ComboBoxItem Content="Haskell" Tag="Haskell" />
                     <ComboBoxItem Content="HTML" Tag="Html" />
                     <ComboBoxItem Content="Java" Tag="Java" />
                     <ComboBoxItem Content="JavaScript" Tag="JavaScript" />
@@ -133,6 +136,7 @@
                     <ComboBoxItem Content="Lua" Tag="Lua" />
                     <ComboBoxItem Content="Markdown" Tag="Markdown" />
                     <ComboBoxItem Content="MSSQL" Tag="MsSql" />
+                    <ComboBoxItem Content="Objective-C" Tag="ObjectiveC" />
                     <ComboBoxItem Content="Oracle SQL" Tag="OracleSql" />
                     <ComboBoxItem Content="PHP" Tag="Php" />
                     <ComboBoxItem Content="PowerShell" Tag="PowerShell" />
@@ -141,7 +145,9 @@
                     <ComboBoxItem Content="Ruby" Tag="Ruby" />
                     <ComboBoxItem Content="Rust" Tag="Rust" />
                     <ComboBoxItem Content="Scala" Tag="Scala" />
+                    <ComboBoxItem Content="SCSS" Tag="Scss" />
                     <ComboBoxItem Content="Swift" Tag="Swift" />
+                    <ComboBoxItem Content="TOML" Tag="Toml" />
                     <ComboBoxItem Content="TypeScript" Tag="TypeScript" />
                     <ComboBoxItem Content="Visual Basic" Tag="VisualBasic" />
                     <ComboBoxItem Content="XML" Tag="Xml" />

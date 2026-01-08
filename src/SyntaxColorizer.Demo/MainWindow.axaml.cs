@@ -2582,6 +2582,852 @@ CMD [""--urls"", ""http://+:8080""]
                 config
                 """,
 
+            SyntaxLanguage.Toml => @"# TOML sample demonstrating syntax highlighting
+# This is a configuration file
+
+[package]
+name = ""syntax-colorizer""
+version = ""1.0.0""
+authors = [""Developer <dev@example.com>""]
+edition = ""2021""
+description = ""A syntax highlighting library""
+license = ""MIT""
+readme = ""README.md""
+repository = ""https://github.com/example/syntax-colorizer""
+
+[dependencies]
+serde = { version = ""1.0"", features = [""derive""] }
+tokio = { version = ""1.0"", features = [""full""] }
+regex = ""1.5""
+
+[dev-dependencies]
+criterion = ""0.4""
+
+[features]
+default = [""std""]
+std = []
+full = [""std"", ""async""]
+async = [""tokio""]
+
+[[bin]]
+name = ""colorizer""
+path = ""src/main.rs""
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[workspace]
+members = [
+    ""core"",
+    ""cli"",
+    ""web"",
+]
+
+# Inline table
+point = { x = 1, y = 2 }
+
+# Array of tables
+[[servers]]
+name = ""alpha""
+ip = ""10.0.0.1""
+port = 8080
+
+[[servers]]
+name = ""beta""
+ip = ""10.0.0.2""
+port = 8081
+
+# Dates and times
+created = 2024-01-15
+updated = 2024-01-15T10:30:00Z
+local_time = 10:30:00
+
+# Boolean values
+enabled = true
+debug = false
+
+# Numbers
+max_connections = 100
+timeout = 30.5
+hex_value = 0xDEADBEEF
+",
+
+            SyntaxLanguage.Haskell => """
+                -- Haskell sample demonstrating syntax highlighting
+
+                {-# LANGUAGE OverloadedStrings #-}
+                {-# LANGUAGE DeriveGeneric #-}
+
+                module Calculator
+                    ( Calculator
+                    , newCalculator
+                    , add
+                    , subtract
+                    , getHistory
+                    ) where
+
+                import Control.Monad (when)
+                import Data.IORef
+                import Data.List (foldl')
+                import qualified Data.Text as T
+                import GHC.Generics (Generic)
+
+                -- | Result data type
+                data Result = Result
+                    { value :: Double
+                    , operation :: String
+                    } deriving (Show, Eq, Generic)
+
+                -- | Calculator with history
+                data Calculator = Calculator
+                    { history :: IORef [Double]
+                    }
+
+                -- | Create a new calculator
+                newCalculator :: IO Calculator
+                newCalculator = do
+                    histRef <- newIORef []
+                    return $ Calculator histRef
+
+                -- | Add two numbers
+                add :: Calculator -> Double -> Double -> IO Double
+                add calc a b = do
+                    let result = a + b
+                    modifyIORef' (history calc) (result :)
+                    return result
+
+                -- | Subtract two numbers
+                subtract :: Calculator -> Double -> Double -> IO Double
+                subtract calc a b = do
+                    let result = a - b
+                    modifyIORef' (history calc) (result :)
+                    return result
+
+                -- | Get calculation history
+                getHistory :: Calculator -> IO [Double]
+                getHistory calc = reverse <$> readIORef (history calc)
+
+                -- Pattern matching with guards
+                factorial :: Integer -> Integer
+                factorial n
+                    | n <= 0    = 1
+                    | otherwise = n * factorial (n - 1)
+
+                -- List comprehension
+                squares :: [Int] -> [Int]
+                squares xs = [x * x | x <- xs, x > 0]
+
+                -- Higher-order function
+                applyTwice :: (a -> a) -> a -> a
+                applyTwice f x = f (f x)
+
+                -- Maybe monad example
+                safeDivide :: Double -> Double -> Maybe Double
+                safeDivide _ 0 = Nothing
+                safeDivide x y = Just (x / y)
+
+                -- Do notation
+                calculate :: String -> IO (Maybe Double)
+                calculate expr = do
+                    putStrLn $ "Calculating: " ++ expr
+                    when (null expr) $
+                        putStrLn "Warning: empty expression"
+                    return $ Just 42.0
+
+                -- Main function
+                main :: IO ()
+                main = do
+                    calc <- newCalculator
+                    result <- add calc 10.0 20.0
+                    putStrLn $ "Sum: " ++ show result
+                    hist <- getHistory calc
+                    putStrLn $ "History: " ++ show hist
+                """,
+
+            SyntaxLanguage.GraphQL => """
+                # GraphQL sample demonstrating syntax highlighting
+
+                # Type definitions
+                type User {
+                  id: ID!
+                  username: String!
+                  email: String!
+                  profile: Profile
+                  posts(first: Int, after: String): PostConnection!
+                  createdAt: DateTime!
+                }
+
+                type Profile {
+                  bio: String
+                  avatar: String
+                  website: URL
+                }
+
+                type Post {
+                  id: ID!
+                  title: String!
+                  content: String!
+                  author: User!
+                  comments: [Comment!]!
+                  tags: [String!]
+                  published: Boolean!
+                  createdAt: DateTime!
+                }
+
+                type Comment {
+                  id: ID!
+                  text: String!
+                  author: User!
+                  post: Post!
+                }
+
+                # Connection types for pagination
+                type PostConnection {
+                  edges: [PostEdge!]!
+                  pageInfo: PageInfo!
+                  totalCount: Int!
+                }
+
+                type PostEdge {
+                  node: Post!
+                  cursor: String!
+                }
+
+                type PageInfo {
+                  hasNextPage: Boolean!
+                  hasPreviousPage: Boolean!
+                  startCursor: String
+                  endCursor: String
+                }
+
+                # Input types
+                input CreateUserInput {
+                  username: String!
+                  email: String!
+                  password: String!
+                }
+
+                input CreatePostInput {
+                  title: String!
+                  content: String!
+                  tags: [String!]
+                  published: Boolean = false
+                }
+
+                # Enum
+                enum PostStatus {
+                  DRAFT
+                  PUBLISHED
+                  ARCHIVED
+                }
+
+                # Interface
+                interface Node {
+                  id: ID!
+                }
+
+                # Union type
+                union SearchResult = User | Post | Comment
+
+                # Scalar types
+                scalar DateTime
+                scalar URL
+
+                # Query type
+                type Query {
+                  user(id: ID!): User
+                  users(first: Int, after: String): [User!]!
+                  post(id: ID!): Post
+                  posts(status: PostStatus): [Post!]!
+                  search(query: String!): [SearchResult!]!
+                }
+
+                # Mutation type
+                type Mutation {
+                  createUser(input: CreateUserInput!): User!
+                  createPost(input: CreatePostInput!): Post!
+                  updatePost(id: ID!, input: CreatePostInput!): Post
+                  deletePost(id: ID!): Boolean!
+                }
+
+                # Subscription type
+                type Subscription {
+                  postCreated: Post!
+                  commentAdded(postId: ID!): Comment!
+                }
+
+                # Directive definition
+                directive @auth(requires: Role = ADMIN) on FIELD_DEFINITION
+
+                enum Role {
+                  ADMIN
+                  USER
+                  GUEST
+                }
+
+                # Example query
+                query GetUserPosts($userId: ID!, $first: Int = 10) {
+                  user(id: $userId) {
+                    username
+                    posts(first: $first) {
+                      edges {
+                        node {
+                          id
+                          title
+                          published
+                        }
+                      }
+                      pageInfo {
+                        hasNextPage
+                      }
+                    }
+                  }
+                }
+
+                # Example mutation
+                mutation CreateNewPost($input: CreatePostInput!) {
+                  createPost(input: $input) {
+                    id
+                    title
+                    createdAt
+                  }
+                }
+
+                # Fragment
+                fragment UserFields on User {
+                  id
+                  username
+                  email
+                }
+                """,
+
+            SyntaxLanguage.Scss => """
+                // SCSS sample demonstrating syntax highlighting
+
+                // Variables
+                $primary-color: #0078d7;
+                $secondary-color: #6c757d;
+                $font-stack: 'Segoe UI', Tahoma, sans-serif;
+                $base-spacing: 16px;
+                $border-radius: 4px;
+
+                // Map
+                $theme-colors: (
+                  'primary': $primary-color,
+                  'secondary': $secondary-color,
+                  'success': #28a745,
+                  'danger': #dc3545,
+                  'warning': #ffc107
+                );
+
+                // Mixin with parameters
+                @mixin button-variant($bg-color, $text-color: white) {
+                  background-color: $bg-color;
+                  color: $text-color;
+                  border: 1px solid darken($bg-color, 10%);
+                  padding: $base-spacing / 2 $base-spacing;
+                  border-radius: $border-radius;
+                  cursor: pointer;
+                  transition: all 0.3s ease;
+
+                  &:hover {
+                    background-color: darken($bg-color, 10%);
+                  }
+
+                  &:active {
+                    transform: translateY(1px);
+                  }
+
+                  &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                  }
+                }
+
+                // Function
+                @function calculate-rem($pixels) {
+                  @return $pixels / 16 * 1rem;
+                }
+
+                // Placeholder selector
+                %flex-center {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+
+                // Base styles
+                *, *::before, *::after {
+                  box-sizing: border-box;
+                  margin: 0;
+                  padding: 0;
+                }
+
+                body {
+                  font-family: $font-stack;
+                  font-size: calculate-rem(16);
+                  line-height: 1.6;
+                  color: #333;
+                  background-color: #f5f5f5;
+                }
+
+                // Nesting
+                .site-header {
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  padding: $base-spacing * 2;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+                  .logo {
+                    font-size: calculate-rem(24);
+                    font-weight: bold;
+                    color: white;
+                  }
+
+                  nav {
+                    @extend %flex-center;
+
+                    ul {
+                      display: flex;
+                      list-style: none;
+                      gap: $base-spacing * 2;
+
+                      li {
+                        a {
+                          color: white;
+                          text-decoration: none;
+                          font-weight: 500;
+
+                          &:hover {
+                            opacity: 0.8;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                // Generate button variants from map
+                @each $name, $color in $theme-colors {
+                  .btn-#{$name} {
+                    @include button-variant($color);
+                  }
+                }
+
+                // Control directives
+                @for $i from 1 through 6 {
+                  .mt-#{$i} {
+                    margin-top: $base-spacing * $i;
+                  }
+                }
+
+                // Conditional
+                $theme: 'dark';
+
+                .card {
+                  @if $theme == 'dark' {
+                    background: #333;
+                    color: white;
+                  } @else {
+                    background: white;
+                    color: #333;
+                  }
+
+                  padding: $base-spacing;
+                  border-radius: $border-radius;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+
+                // Media queries
+                @mixin respond-to($breakpoint) {
+                  @if $breakpoint == 'small' {
+                    @media (max-width: 576px) { @content; }
+                  } @else if $breakpoint == 'medium' {
+                    @media (max-width: 768px) { @content; }
+                  } @else if $breakpoint == 'large' {
+                    @media (max-width: 992px) { @content; }
+                  }
+                }
+
+                .container {
+                  max-width: 1200px;
+                  margin: 0 auto;
+                  padding: 0 $base-spacing;
+
+                  @include respond-to('medium') {
+                    padding: 0 $base-spacing / 2;
+                  }
+                }
+
+                // Keyframes
+                @keyframes fadeIn {
+                  from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+
+                .fade-in {
+                  animation: fadeIn 0.3s ease-in-out;
+                }
+                """,
+
+            SyntaxLanguage.ObjectiveC => """
+                // Objective-C sample demonstrating syntax highlighting
+
+                #import <Foundation/Foundation.h>
+
+                // Protocol definition
+                @protocol CalculatorDelegate <NSObject>
+
+                @optional
+                - (void)calculatorDidUpdateResult:(double)result;
+                - (void)calculatorDidEncounterError:(NSError *)error;
+
+                @required
+                - (void)calculatorDidComplete;
+
+                @end
+
+                // Interface declaration
+                @interface Calculator : NSObject
+
+                @property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *history;
+                @property (nonatomic, weak) id<CalculatorDelegate> delegate;
+                @property (nonatomic, assign) BOOL loggingEnabled;
+
+                // Class methods
+                + (instancetype)sharedCalculator;
+                + (NSString *)version;
+
+                // Instance methods
+                - (instancetype)init NS_DESIGNATED_INITIALIZER;
+                - (double)add:(double)a to:(double)b;
+                - (double)subtract:(double)a from:(double)b;
+                - (void)calculateAsync:(NSString *)expression
+                            completion:(void (^)(double result, NSError *error))completion;
+                - (void)clearHistory;
+
+                @end
+
+                // Implementation
+                @implementation Calculator
+
+                static Calculator *_sharedInstance = nil;
+
+                + (instancetype)sharedCalculator {
+                    static dispatch_once_t onceToken;
+                    dispatch_once(&onceToken, ^{
+                        _sharedInstance = [[self alloc] init];
+                    });
+                    return _sharedInstance;
+                }
+
+                + (NSString *)version {
+                    return @"1.0.0";
+                }
+
+                - (instancetype)init {
+                    self = [super init];
+                    if (self) {
+                        _history = [NSMutableArray array];
+                        _loggingEnabled = NO;
+                    }
+                    return self;
+                }
+
+                - (double)add:(double)a to:(double)b {
+                    double result = a + b;
+                    [self.history addObject:@(result)];
+
+                    if (self.loggingEnabled) {
+                        NSLog(@"Add: %.2f + %.2f = %.2f", a, b, result);
+                    }
+
+                    if ([self.delegate respondsToSelector:@selector(calculatorDidUpdateResult:)]) {
+                        [self.delegate calculatorDidUpdateResult:result];
+                    }
+
+                    return result;
+                }
+
+                - (double)subtract:(double)a from:(double)b {
+                    double result = b - a;
+                    [self.history addObject:@(result)];
+                    return result;
+                }
+
+                - (void)calculateAsync:(NSString *)expression
+                            completion:(void (^)(double, NSError *))completion {
+                    if (!expression || expression.length == 0) {
+                        NSError *error = [NSError errorWithDomain:@"CalculatorError"
+                                                             code:100
+                                                         userInfo:@{NSLocalizedDescriptionKey: @"Expression cannot be empty"}];
+                        if (completion) {
+                            completion(0, error);
+                        }
+                        return;
+                    }
+
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        // Simulate async work
+                        [NSThread sleepForTimeInterval:0.1];
+
+                        double result = 42.0;
+
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (completion) {
+                                completion(result, nil);
+                            }
+                            [self.delegate calculatorDidComplete];
+                        });
+                    });
+                }
+
+                - (void)clearHistory {
+                    [self.history removeAllObjects];
+                }
+
+                - (NSString *)description {
+                    return [NSString stringWithFormat:@"Calculator: history=%@", self.history];
+                }
+
+                @end
+
+                // Category
+                @interface NSNumber (MathAdditions)
+                - (NSNumber *)squared;
+                @end
+
+                @implementation NSNumber (MathAdditions)
+                - (NSNumber *)squared {
+                    double value = [self doubleValue];
+                    return @(value * value);
+                }
+                @end
+
+                // Main function
+                int main(int argc, const char * argv[]) {
+                    @autoreleasepool {
+                        Calculator *calc = [[Calculator alloc] init];
+                        calc.loggingEnabled = YES;
+
+                        double sum = [calc add:10.0 to:20.0];
+                        NSLog(@"Sum: %.2f", sum);
+
+                        // Block syntax
+                        [calc calculateAsync:@"10 + 20" completion:^(double result, NSError *error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error.localizedDescription);
+                            } else {
+                                NSLog(@"Result: %.2f", result);
+                            }
+                        }];
+
+                        // Fast enumeration
+                        for (NSNumber *value in calc.history) {
+                            NSLog(@"History item: %@", value);
+                        }
+
+                        // Literals
+                        NSArray *numbers = @[@1, @2, @3, @4, @5];
+                        NSDictionary *config = @{
+                            @"name": @"SyntaxColorizer",
+                            @"version": @"1.0.0"
+                        };
+
+                        NSLog(@"Config: %@", config);
+                    }
+                    return 0;
+                }
+                """,
+
+            SyntaxLanguage.Elixir => """
+                # Elixir sample demonstrating syntax highlighting
+
+                defmodule Calculator do
+                  @moduledoc \"\"\"
+                  A simple calculator module with history tracking.
+                  \"\"\"
+
+                  use GenServer
+                  require Logger
+
+                  # Module attributes
+                  @version "1.0.0"
+                  @timeout 5000
+
+                  # Type specifications
+                  @type result :: {:ok, float()} | {:error, String.t()}
+
+                  # Struct definition
+                  defstruct history: [], name: "Calculator"
+
+                  ## Client API
+
+                  @doc \"\"\"
+                  Starts the calculator server.
+                  \"\"\"
+                  @spec start_link(keyword()) :: GenServer.on_start()
+                  def start_link(opts \\ []) do
+                    name = Keyword.get(opts, :name, __MODULE__)
+                    GenServer.start_link(__MODULE__, :ok, name: name)
+                  end
+
+                  @doc \"\"\"
+                  Adds two numbers.
+                  \"\"\"
+                  def add(pid \\ __MODULE__, a, b) do
+                    GenServer.call(pid, {:add, a, b})
+                  end
+
+                  def subtract(pid \\ __MODULE__, a, b) do
+                    GenServer.call(pid, {:subtract, a, b})
+                  end
+
+                  def get_history(pid \\ __MODULE__) do
+                    GenServer.call(pid, :get_history)
+                  end
+
+                  def clear_history(pid \\ __MODULE__) do
+                    GenServer.cast(pid, :clear_history)
+                  end
+
+                  ## Server Callbacks
+
+                  @impl true
+                  def init(:ok) do
+                    Logger.info("Calculator started with version #{@version}")
+                    {:ok, %__MODULE__{}}
+                  end
+
+                  @impl true
+                  def handle_call({:add, a, b}, _from, state) do
+                    result = a + b
+                    new_state = %{state | history: [result | state.history]}
+                    {:reply, {:ok, result}, new_state}
+                  end
+
+                  @impl true
+                  def handle_call({:subtract, a, b}, _from, state) do
+                    result = a - b
+                    new_state = %{state | history: [result | state.history]}
+                    {:reply, {:ok, result}, new_state}
+                  end
+
+                  @impl true
+                  def handle_call(:get_history, _from, state) do
+                    {:reply, Enum.reverse(state.history), state}
+                  end
+
+                  @impl true
+                  def handle_cast(:clear_history, state) do
+                    {:noreply, %{state | history: []}}
+                  end
+                end
+
+                defmodule MathUtils do
+                  @moduledoc false
+
+                  @pi 3.14159265359
+
+                  def circle_area(radius) when is_number(radius) and radius > 0 do
+                    @pi * radius * radius
+                  end
+
+                  def circle_area(_), do: {:error, "Invalid radius"}
+
+                  # Pattern matching with multiple clauses
+                  def factorial(0), do: 1
+                  def factorial(1), do: 1
+                  def factorial(n) when n > 1, do: n * factorial(n - 1)
+
+                  # Pipeline operator
+                  def process_numbers(numbers) do
+                    numbers
+                    |> Enum.filter(&(&1 > 0))
+                    |> Enum.map(&(&1 * &1))
+                    |> Enum.sum()
+                  end
+                end
+
+                # Protocol definition
+                defprotocol Printable do
+                  @doc "Converts the data structure to a printable string"
+                  def to_string(data)
+                end
+
+                # Protocol implementation
+                defimpl Printable, for: Calculator do
+                  def to_string(%Calculator{name: name, history: history}) do
+                    "#{name}: #{inspect(history)}"
+                  end
+                end
+
+                # Main module with examples
+                defmodule Main do
+                  def run do
+                    # Start the calculator
+                    {:ok, _pid} = Calculator.start_link()
+
+                    # Basic operations
+                    {:ok, sum} = Calculator.add(10, 20)
+                    IO.puts("Sum: #{sum}")
+
+                    # Pattern matching
+                    case Calculator.add(5, 3) do
+                      {:ok, result} -> IO.puts("Result: #{result}")
+                      {:error, reason} -> IO.puts("Error: #{reason}")
+                    end
+
+                    # With statement
+                    with {:ok, a} <- Calculator.add(1, 2),
+                         {:ok, b} <- Calculator.add(3, 4),
+                         {:ok, c} <- Calculator.add(a, b) do
+                      IO.puts("Combined result: #{c}")
+                    else
+                      {:error, reason} -> IO.puts("Failed: #{reason}")
+                    end
+
+                    # List comprehension
+                    squares = for n <- 1..10, rem(n, 2) == 0, do: n * n
+                    IO.inspect(squares, label: "Even squares")
+
+                    # Anonymous function
+                    double = fn x -> x * 2 end
+                    IO.puts("Double 5: #{double.(5)}")
+
+                    # Capture operator
+                    triple = &(&1 * 3)
+                    IO.puts("Triple 5: #{triple.(5)}")
+
+                    # Map and keyword list
+                    config = %{
+                      name: "SyntaxColorizer",
+                      version: "1.0.0",
+                      features: [:highlighting, :formatting, :linting]
+                    }
+
+                    # Atom and string
+                    status = :ok
+                    message = "Operation completed"
+
+                    # Sigils
+                    regex = ~r/\d+/
+                    words = ~w(hello world elixir)
+                    charlist = ~c"hello"
+
+                    IO.inspect(config, label: "Config")
+                    IO.puts("Status: #{status}, Message: #{message}")
+                  end
+                end
+                """,
+
             _ => "// Select a language to see sample code with syntax highlighting"
         };
     }
