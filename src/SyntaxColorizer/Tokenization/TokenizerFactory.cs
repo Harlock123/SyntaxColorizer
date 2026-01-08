@@ -87,6 +87,11 @@ public static class TokenizerFactory
             SyntaxLanguage.Swift => new SwiftTokenizer(),
             SyntaxLanguage.Scala => new ScalaTokenizer(),
             SyntaxLanguage.Dockerfile => new DockerfileTokenizer(),
+            SyntaxLanguage.Lua => new LuaTokenizer(),
+            SyntaxLanguage.Dart => new DartTokenizer(),
+            SyntaxLanguage.FSharp => new FSharpTokenizer(),
+            SyntaxLanguage.R => new RTokenizer(),
+            SyntaxLanguage.Groovy => new GroovyTokenizer(),
             _ => null
         };
     }

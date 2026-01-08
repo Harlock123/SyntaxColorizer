@@ -16,7 +16,7 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 ## Features
 
 - Real-time syntax highlighting as you type
-- Support for 26 programming languages
+- Support for 31 programming languages
 - 7 built-in color themes
 - Line numbers display (toggleable)
 - Linting infrastructure with customizable rules
@@ -28,7 +28,9 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 | Category | Languages |
 |----------|-----------|
 | **C-Family** | C, C++, C#, Java, Kotlin, Scala, Swift |
-| **Scripting** | JavaScript, TypeScript, Python, Ruby, PHP |
+| **Scripting** | JavaScript, TypeScript, Python, Ruby, PHP, Lua, Groovy |
+| **Functional** | F#, R |
+| **Mobile** | Dart |
 | **Systems** | Rust, Go |
 | **Microsoft** | Visual Basic .NET, PowerShell, MS SQL (T-SQL) |
 | **Database** | Oracle SQL (PL/SQL) |

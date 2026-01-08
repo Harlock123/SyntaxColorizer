@@ -84,5 +84,20 @@ public enum SyntaxLanguage
     Scala,
 
     /// <summary>Dockerfile configuration.</summary>
-    Dockerfile
+    Dockerfile,
+
+    /// <summary>Lua programming language.</summary>
+    Lua,
+
+    /// <summary>Dart programming language.</summary>
+    Dart,
+
+    /// <summary>F# programming language.</summary>
+    FSharp,
+
+    /// <summary>R programming language.</summary>
+    R,
+
+    /// <summary>Groovy programming language.</summary>
+    Groovy
 }

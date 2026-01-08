@@ -120,19 +120,24 @@
                     <ComboBoxItem Content="C#" Tag="CSharp" />
                     <ComboBoxItem Content="C++" Tag="Cpp" />
                     <ComboBoxItem Content="CSS" Tag="Css" />
+                    <ComboBoxItem Content="Dart" Tag="Dart" />
                     <ComboBoxItem Content="Dockerfile" Tag="Dockerfile" />
+                    <ComboBoxItem Content="F#" Tag="FSharp" />
                     <ComboBoxItem Content="Go" Tag="Go" />
+                    <ComboBoxItem Content="Groovy" Tag="Groovy" />
                     <ComboBoxItem Content="HTML" Tag="Html" />
                     <ComboBoxItem Content="Java" Tag="Java" />
                     <ComboBoxItem Content="JavaScript" Tag="JavaScript" />
                     <ComboBoxItem Content="JSON" Tag="Json" />
                     <ComboBoxItem Content="Kotlin" Tag="Kotlin" />
+                    <ComboBoxItem Content="Lua" Tag="Lua" />
                     <ComboBoxItem Content="Markdown" Tag="Markdown" />
                     <ComboBoxItem Content="MSSQL" Tag="MsSql" />
                     <ComboBoxItem Content="Oracle SQL" Tag="OracleSql" />
                     <ComboBoxItem Content="PHP" Tag="Php" />
                     <ComboBoxItem Content="PowerShell" Tag="PowerShell" />
                     <ComboBoxItem Content="Python" Tag="Python" />
+                    <ComboBoxItem Content="R" Tag="R" />
                     <ComboBoxItem Content="Ruby" Tag="Ruby" />
                     <ComboBoxItem Content="Rust" Tag="Rust" />
                     <ComboBoxItem Content="Scala" Tag="Scala" />

@@ -1823,6 +1823,765 @@ ENTRYPOINT [""dotnet"", ""SyntaxColorizer.Demo.dll""]
 CMD [""--urls"", ""http://+:8080""]
 ",
 
+            SyntaxLanguage.Lua => """
+                -- Lua sample demonstrating syntax highlighting
+
+                local Calculator = {}
+                Calculator.__index = Calculator
+
+                -- Constructor
+                function Calculator:new()
+                    local self = setmetatable({}, Calculator)
+                    self.history = {}
+                    return self
+                end
+
+                -- Add two numbers
+                function Calculator:add(a, b)
+                    local result = a + b
+                    table.insert(self.history, result)
+                    return result
+                end
+
+                -- Calculate with callback
+                function Calculator:calculate(expression, callback)
+                    if not expression or expression == "" then
+                        error("Expression cannot be empty")
+                    end
+
+                    -- Simulate async with coroutine
+                    local co = coroutine.create(function()
+                        coroutine.yield()
+                        return 42.0
+                    end)
+
+                    if callback then
+                        callback(coroutine.resume(co))
+                    end
+
+                    return 42.0
+                end
+
+                -- Get history
+                function Calculator:getHistory()
+                    return self.history
+                end
+
+                -- Module for utilities
+                local MathUtils = {
+                    PI = 3.14159265359,
+                    E = 2.71828182845
+                }
+
+                function MathUtils.circleArea(radius)
+                    return MathUtils.PI * radius ^ 2
+                end
+
+                function MathUtils.factorial(n)
+                    if n <= 1 then
+                        return 1
+                    end
+                    return n * MathUtils.factorial(n - 1)
+                end
+
+                -- Table operations
+                local config = {
+                    name = "SyntaxColorizer",
+                    version = "1.0.0",
+                    features = {"highlighting", "formatting", "linting"},
+                    settings = {
+                        tabSize = 4,
+                        useSpaces = true
+                    }
+                }
+
+                -- Iterate with pairs
+                for key, value in pairs(config) do
+                    print(key .. ": " .. tostring(value))
+                end
+
+                -- Array iteration with ipairs
+                local numbers = {1, 2, 3, 4, 5}
+                for i, v in ipairs(numbers) do
+                    print(string.format("numbers[%d] = %d", i, v))
+                end
+
+                -- Main execution
+                local calc = Calculator:new()
+                local sum = calc:add(10, 20)
+                print("Sum: " .. sum)
+
+                local area = MathUtils.circleArea(5)
+                print(string.format("Circle area: %.2f", area))
+
+                --[[
+                    Multi-line comment
+                    This is a long string comment
+                ]]
+
+                return {
+                    Calculator = Calculator,
+                    MathUtils = MathUtils
+                }
+                """,
+
+            SyntaxLanguage.Dart => """
+                // Dart sample demonstrating syntax highlighting
+
+                import 'dart:async';
+                import 'dart:math';
+
+                /// A class representing a calculation result.
+                class Result {
+                  final double value;
+                  final String operation;
+                  final DateTime timestamp;
+
+                  const Result({
+                    required this.value,
+                    required this.operation,
+                    DateTime? timestamp,
+                  }) : timestamp = timestamp ?? const DateTime.now();
+
+                  Map<String, dynamic> toJson() => {
+                    'value': value,
+                    'operation': operation,
+                    'timestamp': timestamp.toIso8601String(),
+                  };
+                }
+
+                /// Calculator class with history tracking.
+                class Calculator {
+                  final List<double> _history = [];
+
+                  List<double> get history => List.unmodifiable(_history);
+
+                  /// Add two numbers and store the result.
+                  double add(double a, double b) {
+                    final result = a + b;
+                    _history.add(result);
+                    return result;
+                  }
+
+                  /// Async calculation with expression.
+                  Future<Result> calculate(String expression) async {
+                    if (expression.isEmpty) {
+                      throw ArgumentError('Expression cannot be empty');
+                    }
+
+                    await Future.delayed(const Duration(milliseconds: 100));
+
+                    return Result(
+                      value: 42.0,
+                      operation: 'calculate',
+                    );
+                  }
+
+                  /// Clear history.
+                  void clearHistory() => _history.clear();
+                }
+
+                // Enum with values
+                enum Operation {
+                  add('+'),
+                  subtract('-'),
+                  multiply('*'),
+                  divide('/');
+
+                  final String symbol;
+                  const Operation(this.symbol);
+                }
+
+                // Extension method
+                extension StringExtension on String {
+                  String capitalize() {
+                    if (isEmpty) return this;
+                    return '${this[0].toUpperCase()}${substring(1)}';
+                  }
+                }
+
+                // Mixin
+                mixin Printable {
+                  void printInfo() => print('Info: $this');
+                }
+
+                // Abstract class
+                abstract class Shape with Printable {
+                  double get area;
+                  double get perimeter;
+                }
+
+                // Implementing class
+                class Circle extends Shape {
+                  final double radius;
+
+                  Circle(this.radius);
+
+                  @override
+                  double get area => pi * radius * radius;
+
+                  @override
+                  double get perimeter => 2 * pi * radius;
+
+                  @override
+                  String toString() => 'Circle(radius: $radius)';
+                }
+
+                // Record type (Dart 3)
+                typedef Point = ({double x, double y});
+
+                // Pattern matching (Dart 3)
+                String describeNumber(int n) => switch (n) {
+                  0 => 'zero',
+                  1 => 'one',
+                  2 => 'two',
+                  < 0 => 'negative',
+                  _ => 'many',
+                };
+
+                // Main function
+                void main() async {
+                  final calc = Calculator();
+
+                  // Basic operations
+                  final sum = calc.add(10.0, 20.0);
+                  print('Sum: $sum');
+
+                  // Null safety
+                  String? nullableString;
+                  final length = nullableString?.length ?? 0;
+
+                  // Collection literals
+                  final numbers = [1, 2, 3, 4, 5];
+                  final squared = numbers.map((n) => n * n).toList();
+                  final evens = numbers.where((n) => n.isEven).toList();
+
+                  // Spread operator
+                  final combined = [...numbers, ...squared];
+
+                  // For-in loop
+                  for (final n in numbers) {
+                    print('Number: $n');
+                  }
+
+                  // Async/await
+                  try {
+                    final result = await calc.calculate('10 + 20');
+                    print('Result: ${result.value}');
+                  } catch (e) {
+                    print('Error: $e');
+                  }
+
+                  // Stream
+                  final stream = Stream.periodic(
+                    const Duration(seconds: 1),
+                    (i) => i,
+                  ).take(5);
+
+                  await for (final value in stream) {
+                    print('Stream value: $value');
+                  }
+                }
+                """,
+
+            SyntaxLanguage.FSharp => """
+                // F# sample demonstrating syntax highlighting
+
+                open System
+                open System.Threading.Tasks
+
+                /// A record type for calculation results.
+                type Result = {
+                    Value: float
+                    Operation: string
+                    Timestamp: DateTime
+                }
+
+                /// Calculator module with history tracking.
+                module Calculator =
+                    let mutable private history: float list = []
+
+                    /// Add two numbers and store result.
+                    let add a b =
+                        let result = a + b
+                        history <- result :: history
+                        result
+
+                    /// Subtract two numbers.
+                    let subtract a b =
+                        let result = a - b
+                        history <- result :: history
+                        result
+
+                    /// Async calculation.
+                    let calculateAsync expression = async {
+                        if String.IsNullOrEmpty(expression) then
+                            failwith "Expression cannot be empty"
+
+                        do! Async.Sleep(100)
+                        return { Value = 42.0; Operation = "calculate"; Timestamp = DateTime.Now }
+                    }
+
+                    /// Get history as immutable list.
+                    let getHistory () = List.rev history
+
+                    /// Clear history.
+                    let clearHistory () = history <- []
+
+                /// Discriminated union for operations.
+                type Operation =
+                    | Add of float * float
+                    | Subtract of float * float
+                    | Multiply of float * float
+                    | Divide of float * float
+                    | Clear
+
+                /// Execute an operation using pattern matching.
+                let executeOperation op =
+                    match op with
+                    | Add(a, b) -> Some(a + b)
+                    | Subtract(a, b) -> Some(a - b)
+                    | Multiply(a, b) -> Some(a * b)
+                    | Divide(a, b) when b <> 0.0 -> Some(a / b)
+                    | Divide(_, _) -> None
+                    | Clear -> Some(0.0)
+
+                /// Math utilities module.
+                module MathUtils =
+                    let pi = 3.14159265359
+
+                    let circleArea radius = pi * radius ** 2.0
+
+                    let rec factorial n =
+                        match n with
+                        | _ when n <= 1 -> 1L
+                        | _ -> int64 n * factorial (n - 1)
+
+                    /// Higher-order function.
+                    let applyTwice f x = f (f x)
+
+                /// Generic container with constraints.
+                type Container<'T when 'T : comparison>(value: 'T) =
+                    member _.Value = value
+                    member _.Map(f: 'T -> 'U) = Container(f value)
+
+                /// Active pattern for even/odd.
+                let (|Even|Odd|) n =
+                    if n % 2 = 0 then Even else Odd
+
+                /// Function using active pattern.
+                let describeNumber n =
+                    match n with
+                    | Even -> "even"
+                    | Odd -> "odd"
+
+                /// Computation expression example.
+                let asyncWorkflow = async {
+                    let! result1 = Calculator.calculateAsync "10 + 20"
+                    printfn "Result 1: %f" result1.Value
+
+                    let! result2 = Calculator.calculateAsync "5 * 8"
+                    printfn "Result 2: %f" result2.Value
+
+                    return result1.Value + result2.Value
+                }
+
+                /// Pipeline operators and list operations.
+                let processNumbers numbers =
+                    numbers
+                    |> List.filter (fun n -> n % 2 = 0)
+                    |> List.map (fun n -> n * n)
+                    |> List.sum
+
+                /// Sequence expression.
+                let fibonacci =
+                    seq {
+                        let mutable a, b = 0, 1
+                        while true do
+                            yield a
+                            let temp = a
+                            a <- b
+                            b <- temp + b
+                    }
+
+                // Main entry point
+                [<EntryPoint>]
+                let main args =
+                    // Basic operations
+                    let sum = Calculator.add 10.0 20.0
+                    printfn "Sum: %f" sum
+
+                    // Pattern matching on operation
+                    let result = executeOperation (Add(5.0, 3.0))
+                    match result with
+                    | Some value -> printfn "Result: %f" value
+                    | None -> printfn "Error"
+
+                    // List operations
+                    let numbers = [1; 2; 3; 4; 5]
+                    let squared = numbers |> List.map (fun n -> n * n)
+                    let total = processNumbers numbers
+
+                    printfn "Squared: %A" squared
+                    printfn "Total: %d" total
+
+                    // Take first 10 Fibonacci numbers
+                    let fibs = fibonacci |> Seq.take 10 |> Seq.toList
+                    printfn "Fibonacci: %A" fibs
+
+                    0
+                """,
+
+            SyntaxLanguage.R => """
+                # R sample demonstrating syntax highlighting
+
+                # Load required libraries
+                library(tidyverse)
+                library(ggplot2)
+
+                # Define a Calculator class using R6
+                # install.packages("R6") if needed
+
+                # Simple calculator using closures
+                create_calculator <- function() {
+                  history <- c()
+
+                  add <- function(a, b) {
+                    result <- a + b
+                    history <<- c(history, result)
+                    result
+                  }
+
+                  subtract <- function(a, b) {
+                    result <- a - b
+                    history <<- c(history, result)
+                    result
+                  }
+
+                  get_history <- function() {
+                    history
+                  }
+
+                  clear_history <- function() {
+                    history <<- c()
+                  }
+
+                  list(
+                    add = add,
+                    subtract = subtract,
+                    get_history = get_history,
+                    clear_history = clear_history
+                  )
+                }
+
+                # Vector operations
+                numbers <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                squared <- numbers^2
+                evens <- numbers[numbers %% 2 == 0]
+                odds <- numbers[numbers %% 2 != 0]
+
+                # Statistical calculations
+                mean_val <- mean(numbers)
+                sd_val <- sd(numbers)
+                median_val <- median(numbers)
+                sum_val <- sum(numbers)
+
+                # Create a data frame
+                df <- data.frame(
+                  id = 1:5,
+                  name = c("Alice", "Bob", "Charlie", "Diana", "Eve"),
+                  score = c(85, 92, 78, 95, 88),
+                  passed = c(TRUE, TRUE, TRUE, TRUE, TRUE)
+                )
+
+                # Data manipulation with dplyr-style operations
+                filtered_df <- df[df$score > 80, ]
+                sorted_df <- df[order(-df$score), ]
+
+                # Apply functions
+                apply_result <- sapply(numbers, function(x) x^2 + 2*x + 1)
+                lapply_result <- lapply(1:3, function(i) paste("Item", i))
+
+                # Control flow
+                factorial <- function(n) {
+                  if (n <= 1) {
+                    return(1)
+                  } else {
+                    return(n * factorial(n - 1))
+                  }
+                }
+
+                # For loop
+                for (i in 1:5) {
+                  cat(sprintf("Iteration %d: %d\n", i, i^2))
+                }
+
+                # While loop
+                counter <- 1
+                while (counter <= 3) {
+                  print(paste("Counter:", counter))
+                  counter <- counter + 1
+                }
+
+                # Vectorized operations
+                x <- 1:100
+                y <- sin(x / 10) + rnorm(100, mean = 0, sd = 0.1)
+
+                # Linear regression
+                model <- lm(y ~ x)
+                summary_model <- summary(model)
+                coefficients <- coef(model)
+
+                # Create a plot
+                plot_data <- data.frame(x = x, y = y)
+
+                # Using ggplot2 (if available)
+                # p <- ggplot(plot_data, aes(x = x, y = y)) +
+                #   geom_point(color = "blue", alpha = 0.5) +
+                #   geom_smooth(method = "lm", color = "red") +
+                #   labs(title = "Sample Plot", x = "X Values", y = "Y Values") +
+                #   theme_minimal()
+
+                # Matrix operations
+                mat <- matrix(1:9, nrow = 3, ncol = 3)
+                transposed <- t(mat)
+                determinant <- det(mat)
+
+                # List operations
+                config <- list(
+                  name = "SyntaxColorizer",
+                  version = "1.0.0",
+                  features = c("highlighting", "formatting", "linting"),
+                  settings = list(
+                    tabSize = 4,
+                    useSpaces = TRUE
+                  )
+                )
+
+                # String operations
+                greeting <- "Hello, R!"
+                upper_greeting <- toupper(greeting)
+                split_greeting <- strsplit(greeting, ", ")[[1]]
+
+                # Main execution
+                calc <- create_calculator()
+                sum_result <- calc$add(10, 20)
+                diff_result <- calc$subtract(50, 30)
+
+                cat("Sum:", sum_result, "\n")
+                cat("Difference:", diff_result, "\n")
+                cat("History:", calc$get_history(), "\n")
+
+                # Print summary statistics
+                cat("\nSummary Statistics:\n")
+                cat("Mean:", mean_val, "\n")
+                cat("SD:", sd_val, "\n")
+                cat("Median:", median_val, "\n")
+
+                # Return results
+                results <- list(
+                  calculator = calc,
+                  statistics = list(mean = mean_val, sd = sd_val),
+                  data = df
+                )
+                """,
+
+            SyntaxLanguage.Groovy => """
+                // Groovy sample demonstrating syntax highlighting
+
+                package com.syntaxcolorizer.demo
+
+                import groovy.transform.CompileStatic
+                import groovy.transform.ToString
+                import java.time.LocalDateTime
+
+                /**
+                 * A class representing a calculation result.
+                 */
+                @ToString(includeNames = true)
+                class Result {
+                    double value
+                    String operation
+                    LocalDateTime timestamp = LocalDateTime.now()
+
+                    Map toMap() {
+                        [value: value, operation: operation, timestamp: timestamp.toString()]
+                    }
+                }
+
+                /**
+                 * Calculator class with history tracking.
+                 */
+                @CompileStatic
+                class Calculator {
+                    private List<Double> history = []
+
+                    // Add two numbers
+                    double add(double a, double b) {
+                        def result = a + b
+                        history << result
+                        result
+                    }
+
+                    // Subtract two numbers
+                    double subtract(double a, double b) {
+                        def result = a - b
+                        history << result
+                        result
+                    }
+
+                    // Calculate with closure
+                    def calculate(String expression, Closure callback = null) {
+                        if (!expression) {
+                            throw new IllegalArgumentException('Expression cannot be empty')
+                        }
+
+                        def result = Eval.me(expression)
+
+                        if (callback) {
+                            callback(result)
+                        }
+
+                        result
+                    }
+
+                    List<Double> getHistory() {
+                        history.asImmutable()
+                    }
+
+                    void clearHistory() {
+                        history.clear()
+                    }
+                }
+
+                // Trait (similar to interface with default implementations)
+                trait Printable {
+                    void printInfo() {
+                        println "Info: ${this}"
+                    }
+                }
+
+                // Enum with methods
+                enum Operation {
+                    ADD('+'),
+                    SUBTRACT('-'),
+                    MULTIPLY('*'),
+                    DIVIDE('/')
+
+                    final String symbol
+
+                    Operation(String symbol) {
+                        this.symbol = symbol
+                    }
+
+                    double execute(double a, double b) {
+                        switch (this) {
+                            case ADD: return a + b
+                            case SUBTRACT: return a - b
+                            case MULTIPLY: return a * b
+                            case DIVIDE: return b != 0 ? a / b : Double.NaN
+                        }
+                    }
+                }
+
+                // Closure examples
+                def square = { x -> x * x }
+                def cube = { it * it * it }  // 'it' is implicit parameter
+
+                // GString (interpolated strings)
+                def name = "Groovy"
+                def version = "4.0"
+                def greeting = "Hello, ${name} ${version}!"
+
+                // Collection operations
+                def numbers = [1, 2, 3, 4, 5]
+                def squared = numbers.collect { it * it }
+                def evens = numbers.findAll { it % 2 == 0 }
+                def sum = numbers.inject(0) { acc, val -> acc + val }
+
+                // Map literal and operations
+                def config = [
+                    name: 'SyntaxColorizer',
+                    version: '1.0.0',
+                    features: ['highlighting', 'formatting', 'linting'],
+                    settings: [
+                        tabSize: 4,
+                        useSpaces: true
+                    ]
+                ]
+
+                // Safe navigation and Elvis operator
+                def nullableString = null
+                def length = nullableString?.length() ?: 0
+
+                // Spread operator
+                def lengths = ['one', 'two', 'three']*.length()
+
+                // Range
+                def range = 1..10
+                def chars = 'a'..'z'
+
+                // Regular expression
+                def pattern = ~/\d+/
+                def text = "There are 42 apples and 13 oranges"
+                def matches = (text =~ pattern).collect { it }
+
+                // Multi-line string
+                def sql = '''
+                    SELECT *
+                    FROM users
+                    WHERE active = true
+                    ORDER BY name
+                '''
+
+                // Slashy string (regex friendly)
+                def regexPattern = /\w+@\w+\.\w+/
+
+                // Builder pattern with markup
+                def builder = new StringBuilder()
+                def xml = {
+                    calculator {
+                        operation(type: 'add') {
+                            operand(10)
+                            operand(20)
+                        }
+                    }
+                }
+
+                // Main execution
+                def calc = new Calculator()
+
+                // Basic operations
+                def result = calc.add(10, 20)
+                println "Sum: ${result}"
+
+                // Using closure
+                calc.calculate('5 + 3 * 2') { res ->
+                    println "Calculation result: ${res}"
+                }
+
+                // Collection processing with method chaining
+                def processed = numbers
+                    .findAll { it > 2 }
+                    .collect { it * 2 }
+                    .sum()
+
+                println "Processed: ${processed}"
+
+                // Each with index
+                numbers.eachWithIndex { val, idx ->
+                    println "numbers[${idx}] = ${val}"
+                }
+
+                // GroupBy
+                def words = ['apple', 'banana', 'cherry', 'apricot', 'blueberry']
+                def grouped = words.groupBy { it[0] }
+                println "Grouped by first letter: ${grouped}"
+
+                // Return config
+                config
+                """,
+
             _ => "// Select a language to see sample code with syntax highlighting"
         };
     }
