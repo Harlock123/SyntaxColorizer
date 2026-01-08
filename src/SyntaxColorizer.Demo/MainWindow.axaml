@@ -163,6 +163,13 @@
                     <ComboBoxItem Content="GitHub Dark" Tag="GitHubDark" />
                     <ComboBoxItem Content="Solarized Light" Tag="SolarizedLight" />
                     <ComboBoxItem Content="Solarized Dark" Tag="SolarizedDark" />
+                    <ComboBoxItem Content="Dracula" Tag="Dracula" />
+                    <ComboBoxItem Content="One Dark" Tag="OneDark" />
+                    <ComboBoxItem Content="One Light" Tag="OneLight" />
+                    <ComboBoxItem Content="Nord" Tag="Nord" />
+                    <ComboBoxItem Content="Gruvbox Dark" Tag="GruvboxDark" />
+                    <ComboBoxItem Content="Gruvbox Light" Tag="GruvboxLight" />
+                    <ComboBoxItem Content="Quiet Light" Tag="QuietLight" />
                 </ComboBox>
 
                 <CheckBox x:Name="ShowLineNumbersCheckBox" Classes="toolbar-checkbox" Content="Show Line Numbers" IsChecked="True" VerticalAlignment="Center" Margin="20,0,0,0" />

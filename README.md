@@ -17,7 +17,7 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 
 - Real-time syntax highlighting as you type
 - Support for 37 programming languages
-- 7 built-in color themes
+- 14 built-in color themes
 - Line numbers display (toggleable)
 - Linting infrastructure with customizable rules
 - MVVM-friendly design
@@ -144,6 +144,13 @@ editor.ShowLineNumbers = true;
 | GitHub Dark | Dark |
 | Solarized Light | Light |
 | Solarized Dark | Dark |
+| Dracula | Dark |
+| One Dark | Dark |
+| One Light | Light |
+| Nord | Dark |
+| Gruvbox Dark | Dark |
+| Gruvbox Light | Light |
+| Quiet Light | Light |
 
 ```csharp
 using SyntaxColorizer.Themes;
@@ -152,12 +159,19 @@ using SyntaxColorizer.Themes;
 var vsLight = BuiltInThemes.VisualStudioLight;
 var githubLight = BuiltInThemes.GitHubLight;
 var solarizedLight = BuiltInThemes.SolarizedLight;
+var oneLight = BuiltInThemes.OneLight;
+var gruvboxLight = BuiltInThemes.GruvboxLight;
+var quietLight = BuiltInThemes.QuietLight;
 
 // Dark themes
 var vsDark = BuiltInThemes.VisualStudioDark;
 var monokai = BuiltInThemes.Monokai;
 var githubDark = BuiltInThemes.GitHubDark;
 var solarizedDark = BuiltInThemes.SolarizedDark;
+var dracula = BuiltInThemes.Dracula;
+var oneDark = BuiltInThemes.OneDark;
+var nord = BuiltInThemes.Nord;
+var gruvboxDark = BuiltInThemes.GruvboxDark;
 ```
 
 ## Linting

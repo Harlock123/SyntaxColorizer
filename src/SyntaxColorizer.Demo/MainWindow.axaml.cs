@@ -117,6 +117,13 @@ public partial class MainWindow : Window
             "GitHubDark" => BuiltInThemes.GitHubDark,
             "SolarizedLight" => BuiltInThemes.SolarizedLight,
             "SolarizedDark" => BuiltInThemes.SolarizedDark,
+            "Dracula" => BuiltInThemes.Dracula,
+            "OneDark" => BuiltInThemes.OneDark,
+            "OneLight" => BuiltInThemes.OneLight,
+            "Nord" => BuiltInThemes.Nord,
+            "GruvboxDark" => BuiltInThemes.GruvboxDark,
+            "GruvboxLight" => BuiltInThemes.GruvboxLight,
+            "QuietLight" => BuiltInThemes.QuietLight,
             _ => BuiltInThemes.Default
         };
 
