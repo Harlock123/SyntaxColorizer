@@ -9,12 +9,12 @@
 
     <!-- NuGet Package Properties -->
     <PackageId>SyntaxColorizer</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
     <Authors>Lonnie Watson</Authors>
     <Company>Personal</Company>
     <Product>SyntaxColorizer</Product>
-    <Description>A syntax highlighting TextBox control for Avalonia with support for 37 programming languages and 14 built-in color themes. Features real-time highlighting, line numbers, and linting infrastructure.</Description>
-    <PackageTags>avalonia;syntax-highlighting;textbox;code-editor;syntax;highlighting;editor;avalonia-ui</PackageTags>
+    <Description>A syntax highlighting TextBox control for Avalonia with support for 38 programming languages and 14 built-in color themes. Features real-time highlighting, line numbers, and linting infrastructure.</Description>
+    <PackageTags>avalonia;syntax-highlighting;textbox;code-editor;syntax;highlighting;editor;avalonia-ui;mermaid</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/Harlock123/SyntaxColorizer</PackageProjectUrl>

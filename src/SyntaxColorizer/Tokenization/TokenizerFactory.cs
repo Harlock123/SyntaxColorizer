@@ -98,6 +98,7 @@ public static class TokenizerFactory
             SyntaxLanguage.Scss => new ScssTokenizer(),
             SyntaxLanguage.ObjectiveC => new ObjectiveCTokenizer(),
             SyntaxLanguage.Elixir => new ElixirTokenizer(),
+            SyntaxLanguage.Mermaid => new MermaidTokenizer(),
             _ => null
         };
     }

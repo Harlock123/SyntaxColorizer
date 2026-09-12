@@ -117,5 +117,8 @@ public enum SyntaxLanguage
     ObjectiveC,
 
     /// <summary>Elixir programming language.</summary>
-    Elixir
+    Elixir,
+
+    /// <summary>Mermaid diagram definitions.</summary>
+    Mermaid
 }

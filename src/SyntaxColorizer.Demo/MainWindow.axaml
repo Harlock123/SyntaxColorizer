@@ -123,6 +123,7 @@
                     <ComboBoxItem Content="Dart" Tag="Dart" />
                     <ComboBoxItem Content="Dockerfile" Tag="Dockerfile" />
                     <ComboBoxItem Content="Elixir" Tag="Elixir" />
+                    <ComboBoxItem Content="Mermaid" Tag="Mermaid" />
                     <ComboBoxItem Content="F#" Tag="FSharp" />
                     <ComboBoxItem Content="Go" Tag="Go" />
                     <ComboBoxItem Content="GraphQL" Tag="GraphQL" />

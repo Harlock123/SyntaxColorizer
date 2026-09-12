@@ -3435,6 +3435,29 @@ hex_value = 0xDEADBEEF
                 end
                 """,
 
+            SyntaxLanguage.Mermaid => """
+                %%{init: {'theme': 'dark'}}%%
+                flowchart LR
+                    %% A flowchart, which is what most Mermaid is
+                    start(("Start")) --> check{"Valid?"}
+                    check -->|"yes"| work["Process it"]
+                    check -.->|"no"| stop(("Reject"))
+                    work ==> store[("Records")]
+
+                    subgraph outside["Another system"]
+                        store --- report[/"Nightly report"/]
+                    end
+
+                    style work fill:#b0c4de,stroke:#2d6cdf,stroke-width:2px
+                    classDef warn fill:#f8d7da,stroke:#a3454f
+
+                %% Other diagrams share the file and little else:
+                %%   sequenceDiagram   A->>B: hello / B-->>A: hi / loop ... end
+                %%   classDiagram      Animal <|-- Dog / Animal *-- Leg
+                %%   erDiagram         CUSTOMER ||--o{ ORDER : places
+                %%   gantt             dateFormat YYYY-MM-DD / task :a1, 2026-01-01, 30d
+                """,
+
             _ => "// Select a language to see sample code with syntax highlighting"
         };
     }
