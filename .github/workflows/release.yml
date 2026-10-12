@@ -108,3 +108,17 @@ jobs:
           else
             gh release create "v$VERSION" dist/* --title "SyntaxColorizer $VERSION" --notes-file notes.md --target "$GITHUB_SHA"
           fi
+
+      - name: Push the package to NuGet.org
+        # Needs the repo secret NUGET_API_KEY (an API key from nuget.org with push rights for
+        # SyntaxColorizer). Without it the step is skipped; a version already there is left alone.
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "::warning::NUGET_API_KEY is not set, so the package was not pushed to NuGet.org"
+            exit 0
+          fi
+          dotnet nuget push "dist/*.nupkg" --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json --skip-duplicate
