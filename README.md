@@ -23,6 +23,13 @@ A syntax-highlighting TextBox control for Avalonia with support for multiple pro
 - MVVM-friendly design
 - NuGet package ready
 
+## Try the Demo
+
+Prebuilt demo apps for Windows, macOS and Linux are on the [releases page](../../releases): download the
+archive for your platform, extract it and run `SyntaxColorizer.Demo`. They're self-contained, so there's
+no .NET to install first. On macOS the demo isn't signed, so clear the quarantine once with
+`xattr -d com.apple.quarantine SyntaxColorizer.Demo` (or allow it under System Settings → Privacy & Security).
+
 ## Supported Languages
 
 | Category | Languages |
