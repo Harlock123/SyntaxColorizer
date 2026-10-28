@@ -1,6 +1,6 @@
 # SyntaxColorizer
 
-A syntax-highlighting TextBox control for Avalonia with support for multiple programming languages. Built using only native Avalonia features without external dependencies.
+A syntax-highlighting TextBox control for Avalonia with support for multiple programming languages. Built on [AvaloniaEdit](https://github.com/AvaloniaUI/AvaloniaEdit) (the `Avalonia.AvaloniaEdit` package), which it wraps and colours with its own tokenizers.
 
 ![SyntaxColorizer Demo](https://raw.githubusercontent.com/harlock123/SyntaxColorizer/main/docs/images/Screenshot1.png)
 
